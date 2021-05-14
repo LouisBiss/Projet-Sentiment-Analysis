@@ -94,12 +94,12 @@ def get_all_tweets(screen_name):
     tweets = tweepy.Cursor(api.search, q=Mot_clef_recherche, lang="fr").items(Nb_tweets)
     
     # transform the tweepy tweets into a 2D array that will populate the csv
-    outtweets = [[tweet.id, tweet.user.name, tweet.created_at, tweet.text, tweet.geo, tweet.user.followers_count, tweet.source, url] for tweet in tweets]
+    outtweets = [[tweet.id, tweet.user.name, tweet.created_at, tweet.text, tweet.geo, tweet.user.location, tweet.user.followers_count, tweet.source, url] for tweet in tweets]
 
     # write the csv
     with open('tweets.csv', 'w') as f:
         writer = csv.writer(f)
-        writer.writerow(["Id", "user", "created_at", "text", "location", "Followers", "source", "url"])
+        writer.writerow(["Id", "user", "created_at", "text", "géo", "location", "Followers", "source", "url"])
         writer.writerows(outtweets)
         f.close()
 
