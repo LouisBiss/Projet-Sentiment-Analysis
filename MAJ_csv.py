@@ -23,7 +23,8 @@ access_secret = 'NHzt2cJpaP83hcUDgtoCH22oOmzOX7p8nY83TUjvyeM7m'
 
 auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)
-api = tweepy.API(auth)
+#api = tweepy.API(auth)
+api = tweepy.API(auth, wait_on_rate_limit=True)  #à utiliser en cas d'erreur 432
 
 Mot_clef_recherche = input("Entrer le mot clef ou hastag de votre recherche: ")
 Nb_tweets = int(input("Entrer le nombre de tweets a analyser: "))
@@ -97,13 +98,12 @@ def get_all_tweets(screen_name):
     outtweets = [[tweet.id, tweet.user.name, tweet.created_at, tweet.text, tweet.geo, tweet.user.location, tweet.user.followers_count, tweet.source, url] for tweet in tweets]
 
     # write the csv
-    with open('tweets.csv', 'w') as f:
-        writer = csv.writer(f)
+    with open('tweets.csv', 'w', encoding='utf-8') as f:
+        writer = csv.writer(f, delimiter=';', quotechar='`')
         writer.writerow(["Id", "user", "created_at", "text", "géo", "location", "Followers", "source", "url"])
         writer.writerows(outtweets)
-        f.close()
 
-    pass
+    
 
 
 if __name__ == '__main__':
