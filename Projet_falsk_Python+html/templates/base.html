@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style/main2.css">
+</head>
+<body>
+    <div class="box">
+        <img src="static/images/analyse-twitter.jpeg" alt="">
+    </div>
+    
+    <div class="titre">
+        <h3>Analyse sentimentale Twitter</h3>
+    </div>
+    
+    <form action="/send" method="POST">
+        <div class="recherche">
+            <div class="case case_1">
+                <div class="label_box label_box_1">
+                    <label for="Mot_clef">Mot clef recherché</label>
+                </div>
+                <div class="input_box input_box_1">
+                    <input type="text" name="mot_clef">
+                </div>
+            </div>
+            <div class="case case_2">
+                 <div class="label_box label_box_2">
+                    <label for="Nb_tweet">Nombre de tweet à analyser</label>
+                </div>
+                <div class="input_box input_box_2">
+                    <input type="text" name="nb_tweet">
+                </div>
+            </div>
+            <div class="case case_3">
+                 <div class="label_box label_box_3">
+                    <label for="Type">Type d'analyse</label>
+                </div>
+                <div class="input_box input_box_3">
+                    <select class="menu" name='type_analyse'>
+                        <option value="global">Analyse Global</option>
+                        <option value="source">Analyse par source</option>
+                        <option value="abonnés">Analyse par nombre d'abonnés</option>
+                        <!--<option value="divide">Divide</option>-->
+                    </select>
+                </div>
+            </div>
+        </div>
+
+       
+        <button class="button" type="submit"><span>Lancer l'analyse</span></button>
+      
+        
+    </from>
+    <div class="resultats">
+        <div class=" prop a">
+         {{a}}
+        </div>
+        <div class=" prop b">
+         {{b}}
+        </div>
+        <div class=" prop c">
+         {{c}}
+        </div>
+    </div>
+    
+    <div class="graphe">
+        <img src="static/images/new_plot.png" alt="">
+    </div>
+  
+</body>
+</html>
