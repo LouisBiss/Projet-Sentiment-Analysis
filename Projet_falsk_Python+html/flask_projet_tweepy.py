@@ -218,6 +218,7 @@ def send():
                 
                 #sauvegarde image
                 plt.savefig('static/images/new_plot.png')
+                return render_template('base.html') 
 
 
         elif type_analyse=='abonnés':
@@ -317,6 +318,7 @@ def send():
                 df_nbfol.plot.bar(rot=0)
                 
                 plt.savefig('static/images/new_plot.png')
+                return render_template('base.html') 
 
 if __name__=="__main__":
     app.run(debug=True)
